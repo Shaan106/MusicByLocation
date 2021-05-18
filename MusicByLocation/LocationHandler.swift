@@ -37,7 +37,7 @@ class LocationHandler: NSObject, CLLocationManagerDelegate {
 //                    self.lastKnownLocation.thoroughfare = "Error"
                 } else {
                     if let firstPlacemark = placemarks?[0] {
-                        self.stateController?.lastKnownLocation = firstPlacemark.getLocationBreakDown()
+                        self.stateController?.lastKnownLocation = firstPlacemark.getCity()
 //                        self.lastKnownLocation.street = firstPlacemark.thoroughfare ?? "Couldn't Find Thoroughfare"
 //                        self.lastKnownLocation.city = firstPlacemark.locality ?? "Couldn't Find Locality"
 //                        self.lastKnownLocation.country = firstPlacemark.country ?? "Couldn't Find Locality"

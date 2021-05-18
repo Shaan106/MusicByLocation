@@ -8,8 +8,14 @@
 import Foundation
 
 class StateController: ObservableObject {
-    @Published var lastKnownLocation: String = ""
+    var lastKnownLocation: String = "" {
+        didSet {
+            getArtists(city: lastKnownLocation)
+        }
+    }
+
     @Published var artistNames: String = ""
+    
     let locationHandler: LocationHandler = LocationHandler()
     
     func findMusic() {
@@ -21,9 +27,10 @@ class StateController: ObservableObject {
         locationHandler.requestAuthorisation()
     }
     
-    func getArtists() {
-        guard let url = URL(string: "https://itunes.apple.com/search?term=Lionel%20Richie&entity=musicArtist")
+    func getArtists(city: String) {
+        guard let url = URL(string: "https://itunes.apple.com/search?term=\(city)&entity=musicArtist")
         else {
+            print(city)
             print("Invalid URL")
             return
         }

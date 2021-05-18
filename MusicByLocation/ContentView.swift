@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject private var state = StateController()
     
     var body: some View {
-        VStack {
+        Form {
             Text(state.artistNames)
             Text(state.lastKnownLocation)
                 .padding()
@@ -21,7 +21,6 @@ struct ContentView: View {
             })
         }.onAppear(perform: {
             state.requestAccessToLocationData()
-            state.getArtists()
         })
     }
 }

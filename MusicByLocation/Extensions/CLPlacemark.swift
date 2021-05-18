@@ -18,4 +18,8 @@ extension CLPlacemark {
             Country: \(self.country ?? "None")
             """
     }
+    
+    func getCity() -> String {
+        return "\(self.locality ?? "None")"
+    }
 }
